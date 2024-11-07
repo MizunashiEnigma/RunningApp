@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="140dp"
         android:text="1325"
-        android:textColor="#8E24AA"
+        android:textColor="#9D00FF"
         android:textSize="48sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,6 +42,7 @@
         android:layout_marginTop="12dp"
         android:layout_marginEnd="16dp"
         android:text="START"
+        android:backgroundTint="@color/design_default_color_secondary"
         app:layout_constraintEnd_toStartOf="@id/btnStop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvTimer" />
@@ -55,6 +56,7 @@
         android:layout_marginTop="12dp"
         android:layout_marginEnd="16dp"
         android:text="STOP"
+        android:backgroundTint="@color/design_default_color_error"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/btnStart"
         app:layout_constraintTop_toBottomOf="@id/tvTimer" />
@@ -65,6 +67,7 @@
         android:layout_width="130dp"
         android:layout_height="130dp"
         android:text="RESET"
+        android:backgroundTint="@color/design_default_color_primary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnStart"
         android:layout_marginTop="32dp"

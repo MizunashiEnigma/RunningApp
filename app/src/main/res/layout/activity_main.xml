@@ -11,11 +11,13 @@
     <!--I like how it turned out. Kinda looks like a prototype GameCube Controller-->
 
     <!-- 'Steps' Display -->
+
+    <!-- 'Timer' Display -->
     <TextView
         android:id="@+id/tvSteps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="76dp"
         android:text="1325"
         android:textColor="#9D00FF"
         android:textSize="48sp"
@@ -24,7 +26,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- 'Timer' Display -->
     <TextView
         android:id="@+id/tvTimer"
         android:layout_width="wrap_content"
@@ -67,17 +68,18 @@
         app:layout_constraintStart_toEndOf="@id/btnStart"
         app:layout_constraintTop_toBottomOf="@id/tvTimer" />
     <!-- 'Reset' Button -->
+    <!-- 'Show Run' Button -->
     <Button
         android:id="@+id/btnReset"
         android:layout_width="130dp"
         android:layout_height="130dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="48dp"
         android:layout_marginBottom="204dp"
         android:backgroundTint="@color/design_default_color_primary"
         android:text="RESET"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-    <!-- 'Show Run' Button -->
+
     <Button
         android:id="@+id/btnshowrun"
         android:layout_width="130dp"
@@ -88,18 +90,18 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
     <!-- 'Steps' TextView -->
+    <!-- 'Time' TextView -->
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="44dp"
         android:text="Steps"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-    <!-- 'Time' TextView -->
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"

@@ -9,20 +9,21 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.runningapp.R;
 
+// used for the dates
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
 public class RunDetailsActivity extends AppCompatActivity
 {
-    @SuppressLint("SetTextI18n")
+    @SuppressLint("SetTextI18n") //unconcerned about Multi-Language Support. HardCoded string ftw.
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_run_details);
 
-        // Grabbing Data from MainActivity
+        // Data form MainActivity
         Intent intent = getIntent();
         int steps = intent.getIntExtra("steps", 0);
         long timeInSeconds = intent.getLongExtra("time", 0);
@@ -33,22 +34,23 @@ public class RunDetailsActivity extends AppCompatActivity
         // And the Calories Burned (Formula: Steps * 0.04)
         double caloriesBurned = steps * 0.04;
 
-        // The Current Date
+        // Grabs the current data :  EU date format is the default. But it will grap the user's locale
+        // for those weirdo that use mmddyyyy. clearly the best is yyyymmdd
         String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
 
-        // My References to the TextViews
+        // TextViews
         TextView tvDate = findViewById(R.id.tvDate);
         TextView tvMeters = findViewById(R.id.tvMeters);
         TextView tvCalories = findViewById(R.id.tvCalories);
         TextView tvTimeTaken = findViewById(R.id.tvTimeTaken);
 
-        // Apply the changes to the TextViews
+        // Apply changes to TextViews
         tvDate.setText("Date: " + currentDate);
         tvMeters.setText("Meters Ran: " + String.format(Locale.getDefault(), "%.2f", metersRan));
         tvCalories.setText("Calories Burned: " + String.format(Locale.getDefault(), "%.2f", caloriesBurned));
         tvTimeTaken.setText("Time Taken: " + timeInSeconds + " seconds");
 
-        // The Back Button (Returns to 1st Page
+        // The Back Button (Returns to 1st Page ---> initially crashed until i double checked the manifest. ......i feel so~ stupid
         Button btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(v -> finish());
     }

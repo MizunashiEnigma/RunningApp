@@ -7,16 +7,20 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <!--Had to remove the constraints for the landscape view to work.-->
+    <!--I like how it turned out. Kinda looks like a prototype GameCube Controller-->
+
     <!-- 'Steps' Display -->
     <TextView
         android:id="@+id/tvSteps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="36dp"
         android:text="1325"
         android:textColor="#9D00FF"
         android:textSize="48sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.499"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -33,6 +37,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvSteps" />
 
+
+
     <!-- 'Start' Button -->
     <Button
         android:id="@+id/btnStart"
@@ -41,8 +47,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="16dp"
-        android:text="START"
         android:backgroundTint="@color/design_default_color_secondary"
+        android:text="START"
         app:layout_constraintEnd_toStartOf="@id/btnStop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvTimer" />
@@ -55,47 +61,44 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="16dp"
-        android:text="STOP"
         android:backgroundTint="@color/design_default_color_error"
+        android:text="STOP"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/btnStart"
         app:layout_constraintTop_toBottomOf="@id/tvTimer" />
-
     <!-- 'Reset' Button -->
     <Button
         android:id="@+id/btnReset"
         android:layout_width="130dp"
         android:layout_height="130dp"
-        android:text="RESET"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="204dp"
         android:backgroundTint="@color/design_default_color_primary"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnStart"
-        android:layout_marginTop="32dp"
-        android:layout_marginStart="16dp" />
-
+        android:text="RESET"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
     <!-- 'Show Run' Button -->
     <Button
         android:id="@+id/btnshowrun"
         android:layout_width="130dp"
         android:layout_height="130dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginBottom="204dp"
         android:text="SHOW RUN"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnStop"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp" />
-
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
     <!-- 'Steps' TextView -->
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="108dp"
+        android:layout_marginTop="4dp"
         android:text="Steps"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
     <!-- 'Time' TextView -->
     <TextView
         android:id="@+id/textView2"

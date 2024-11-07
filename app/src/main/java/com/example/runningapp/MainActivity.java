@@ -19,26 +19,26 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener{
 
-    // My UI for Displaying the Steps and the Time
+    // Displays the time and run
     private TextView tvSteps, tvTime;
 
-    // My Buttons for Controlling the Run
+    // Controls the run with these buttons
     private Button btnStart, btnStop, btnReset, btnShowRun;
 
-    // Variables for Managing the Step Counter and Timer
+    // Manages the step counter and if the run is being tracked. False by default lest we have any undue accidents
     private int steps = 0;
     private long startTime = 0;
     private boolean running = false;
 
-    // Functionality for the Accelerometer
+    // Accelerometer Functionality
     private SensorManager sensorManager;
     private Sensor accelerometerSensor;
 
-    // Timer Handler for Updating Time
+    // Updating Time
     private Handler timerHandler = new Handler();
     private Runnable timerRunnable;
 
-    // What is considered a Step Threshold
+    // Step Threshold consideration.....value fresh from my arse.
     private final float STEP_THRESHOLD = 17.5f;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
-        // My UI Elements
+        // UI Elements ---> Local Use
         tvSteps = findViewById(R.id.tvSteps);
         tvTime = findViewById(R.id.tvTimer);
         btnStart = findViewById(R.id.btnStart);
@@ -54,37 +54,38 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         btnReset = findViewById(R.id.btnReset);
         btnShowRun = findViewById(R.id.btnshowrun);
 
-        // My SensorManager & the Accelerometer Sensor
+        // Local use of SensorManager & the Accelerometer Sensor
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         accelerometerSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 
-        // Start Button: Starts the Step Counter and Timer
+        // Start Button ---> Starts the Step Counter and Timer
         btnStart.setOnClickListener(v -> startRun());
 
-        // Stop Button: Stops the Step Counter and Timer
+        // Stop Button ---> Stops the Step Counter and Timer
         btnStop.setOnClickListener(v -> stopRun());
 
-        // Reset Button: Resets the Total Steps and Timer to Zero
+        // Reset Button ---> Resets the Total Steps and Timer to Zero
         btnReset.setOnClickListener(v -> resetRun());
 
-        // Show Run Button: Opens the 2nd Page with the Run Details (Will only Function if the Run is Stopped)
+        // Show Run Button ---> Opens the 2nd Page with the Run Details (Will only Function if the Run is Stopped)
         btnShowRun.setOnClickListener(v -> showRunDetails());
     }
-    // When the Start Button is Pressed...
+    // "Press START to begin" Even after pressing top and pressing start again, it will reset the UI
+    // I know its a consequence of how the code is written, but......I wish I could change that.
     private void startRun()
     {
         if (!running)
         {
-            // My Variables
+            // variables in local use
             running = true;
-            steps = 0;
+            steps = 0;  //Also used in the UI reset
             startTime = System.currentTimeMillis();
 
-            // Reset the UI when the Run Starts
+            // Reset the textviews upon beginning this function
             tvSteps.setText(String.valueOf(steps));
             tvTime.setText("0");
 
-            // Make the accelerometer start Listening
+            // accelerometer starts listening
             sensorManager.registerListener(this, accelerometerSensor, SensorManager.SENSOR_DELAY_UI);
 
             // Start the Timer
@@ -92,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         }
     }
 
-    // When the Stop Button is Pressed...
+    // "Press Pause"
     private void stopRun()
     {
         if (running)
@@ -103,7 +104,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         }
     }
 
-    // When the Reset Button is Pressed...
+    // "Hold L+R, then Press START to reset" ----> Simply refreshes the UI. Nothing Else.
+    // Does not work if the program is tracking steps. Want to change that.....but no.
     private void resetRun()
     {
         if (!running)
@@ -114,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         }
     }
 
-    // When the Show Run Button is Pressed...
+    // "Post Score to the Leaderboard?  Y/N ?" ----> Displays the run on a seperate page.
     private void showRunDetails()
     {
         if (!running)
@@ -148,13 +150,16 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         }
     }
 
+    //not sure why this is here. It does nothing. Except be a class from the SensorListener.
+    // Oh well. may as well keep it here.
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy)
     {
         // ...
     }
 
-    // Starting the Timer
+    // Starting the Timer. Not much else to say.
+    // It displays it in seconds
     private void startTimer()
     {
         timerRunnable = new Runnable()
@@ -179,6 +184,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     }
 
     // Stopping the Sensor when Paused
+    // Don't want any errant.....data harvesting and getting sued
     @Override
     protected void onPause()
     {
@@ -191,6 +197,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     }
 
     // Resume the Sensor when Unpaused
+    // I mean it works, but in the sense that it will work ONLY AFTER the data has been wiped.
     @Override
     protected void onResume()
     {

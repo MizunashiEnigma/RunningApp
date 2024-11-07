@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private Handler timerHandler = new Handler();
     private Runnable timerRunnable;
 
-    // What is considered a Step Threshold (Smaller Number = Speedy Gonzales)
+    // What is considered a Step Threshold
     private final float STEP_THRESHOLD = 17.5f;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -178,7 +178,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         timerHandler.removeCallbacks(timerRunnable);
     }
 
-    // Stop the Sensor when Paused
+    // Stopping the Sensor when Paused
     @Override
     protected void onPause()
     {
@@ -190,7 +190,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         }
     }
 
-    // Resume the Sensor when Un-Paused
+    // Resume the Sensor when Unpaused
     @Override
     protected void onResume()
     {
